@@ -7,12 +7,10 @@ import os
 
 app = Flask(__name__)
 
-
 app.config['MONGO_DBNAME'] = 'python_api' # name of database on mongo
 app.config['MONGO_URI'] = 'mongodb://test:' + urllib.parse.quote_plus("test123") + '@ds219078.mlab.com:19078/python_api?retryWrites=false'
 mongo = PyMongo(app)
 
-app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
@@ -54,3 +52,10 @@ def get_one_star(name):
   else:
     output = "No such name"
   return jsonify({'result' : output})
+
+#error page handle
+@app.errorhandler(404)
+def page_not_found(e):
+    return redirect('/')
+
+

@@ -8,10 +8,8 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <link rel="shortcut icon" href="https://res.cloudinary.com/mhmd/image/upload/v1557366994/img_epm3iz.png" />
    <link rel="apple-touch-icon" href="https://res.cloudinary.com/mhmd/image/upload/v1557366994/img_epm3iz.png" />
-
    <!-- Bootstrap CSS -->
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
    <style>
       body {
          background: #00B4DB;
@@ -32,6 +30,18 @@
          border-radius: 0 50rem 50rem 0;
       }
    </style>
+   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+   <script type="text/javascript">
+      $(document).ready(function () {
+         var button = $('#file-upload');
+         $(button).prop('disabled', true);
+         $('input[type="file"]').change(function (e) {
+            var fileLength = e.target.files;
+            if (fileLength.length > 0) $(button).prop('disabled', false);
+            else $(button).prop('disabled', true);
+         });
+      });
+   </script>
 </head>
 
 <body>
@@ -57,7 +67,7 @@
                   </div>
                   <!-- End -->
                   <!-- Custom bootstrap upload file-->
-                  <input type="submit" for="fileUpload"
+                  <input type="submit" for="fileUpload" id="file-upload"
                      class="file-upload btn btn-primary btn-block rounded-pill shadow"><i
                      class="fa fa-upload mr-2"></i></input>
                   <!-- End -->
@@ -76,6 +86,7 @@
          </div>
       </div>
    </section>
+
 </body>
 
 </html>
