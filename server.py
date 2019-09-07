@@ -47,6 +47,3 @@ def get_one_star(name):
     output = "No such name"
   return jsonify({'result' : output})
 
-
-if __name__ == '__main__':
-    app.run()
